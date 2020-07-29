@@ -16,10 +16,12 @@ const Wrapper = styled.div`
 const Title = styled.div`
   direction: ltr;
   display: flex;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #222222;
+  padding: 10px 16px;
+  background-color: rgba(0, 0, 0, 0.06);
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  color: #333333;
 `;
 
 const Body = styled.div`
@@ -39,30 +41,30 @@ const Col = styled.div`
 
 const Price = styled.div`
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.success[200]};
   padding: 4px 8px;
+  background-color: #c2d3eb;
+  color: #192f4d;
 `;
 
 const BuyButton = styled.button`
   border: none;
   border-radius: 4px;
   padding: 4px 8px;
-  background-color: ${({ theme }) => theme.success[100]};
   font-family: inherit;
   cursor: pointer;
   transition: 0.15s ease-out;
   font-size: 16px;
+  color: #3d4f17;
+  background-color: #cee3a1;
   :hover {
-    background-color: ${({ theme }) => theme.success[300]};
+    background-color: #add062;
   }
 `;
 
 function ShopItem() {
   return (
     <Wrapper>
-      <Title>
-        <div>aghanim sceptre</div>
-      </Title>
+      <Title>aghanim sceptre</Title>
       <Body>
         <Col>
           <Price>200,000 تومان</Price>

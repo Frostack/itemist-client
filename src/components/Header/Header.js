@@ -51,8 +51,10 @@ const MenuButton = styled(motion.div)`
   margin-left: 16px;
   display: flex;
   align-items: center;
+  border-radius: 50%;
   :hover {
     color: ${({ theme }) => theme.primary[400]};
+    background-color: rgba(255, 255, 255, 0.9);
   }
 `;
 
@@ -81,6 +83,14 @@ const Image = styled.img`
 const Profile = styled(Anchor)`
   display: flex;
   padding-left: 8px;
+`;
+
+const MenuLink = styled(Anchor)`
+  padding: 4px;
+  border-radius: 2px;
+  :hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
 `;
 
 function Header({ user }) {
@@ -116,16 +126,16 @@ function Header({ user }) {
           {isMenuOpen && (
             <Menu>
               <motion.div {...animateProps} transition={{ delay: 0.1 }}>
-                <Anchor to="/shop">فروشگاه</Anchor>
+                <MenuLink to="/shop">فروشگاه</MenuLink>
               </motion.div>
               <motion.div {...animateProps} transition={{ delay: 0.15 }}>
-                <Anchor to="/sell">فروش</Anchor>
+                <MenuLink to="/sell">فروش</MenuLink>
               </motion.div>
               <motion.div {...animateProps} transition={{ delay: 0.15 }}>
-                <Anchor to="/trade">ترید</Anchor>
+                <MenuLink to="/trade">ترید</MenuLink>
               </motion.div>
               <motion.div {...animateProps} transition={{ delay: 0.2 }}>
-                <Anchor to="/about">درباره</Anchor>
+                <MenuLink to="/about">درباره</MenuLink>
               </motion.div>
             </Menu>
           )}
