@@ -25,8 +25,15 @@ function InProgress() {
       <Letter
         key={i}
         initial={{ y: 0 }}
-        animate={{ y: [0, 200, 0], color: [randomColor(), randomColor(), randomColor()] }}
-        transition={{ loop: Infinity, duration: 2 + Math.random(), delay: Math.random() }}
+        animate={{
+          y: [0, 200, 0],
+          color: [randomColor(), randomColor(), randomColor()],
+        }}
+        transition={{
+          loop: Infinity,
+          duration: 2 + Math.random(),
+          delay: Math.random(),
+        }}
       >
         {letter}
       </Letter>
@@ -34,9 +41,15 @@ function InProgress() {
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Wrapper>
-        <div>{renderAnimatedText('خفه شو کونده')}</div>
+        <div style={{ direction: 'ltr' }}>
+          {renderAnimatedText('In-Progress')}
+        </div>
       </Wrapper>
     </motion.div>
   );

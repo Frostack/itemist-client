@@ -13,6 +13,7 @@ import InProgress from '../InProgress/InProgress';
 import Shop from '../Shop/Shop';
 import Profile from '../Profile/Profile';
 import Sell from '../Sell/Sell';
+import Inventory from '../Inventory/Inventory';
 
 const Wrapper = styled.div`
   background: url(./assets/background.jpg) no-repeat center center fixed;
@@ -44,6 +45,7 @@ function App({ verifyUser }) {
                 <Route exact path="/shop" component={Shop} />
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/sell" component={Sell} />
+                <Route exact path="/inventory" component={Inventory} />
               </Switch>
             </AnimatePresence>
           )}

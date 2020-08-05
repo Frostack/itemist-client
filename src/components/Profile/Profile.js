@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { BsCardText } from 'react-icons/bs';
+import { BsCardText, BsArchive } from 'react-icons/bs';
 
 import bgImg from '../../assets/profile-bg.jpg';
 
@@ -34,9 +35,13 @@ const Avatar = styled.img`
   transform: translateY(-50%);
 `;
 
-const Name = styled.div`
+const Name = styled.a`
   color: #222222;
   font-size: 32px;
+  transition: 0.2s;
+  :hover {
+    color: #2196f3;
+  }
 `;
 
 const Email = styled.div`
@@ -55,6 +60,8 @@ const TradeUrl = styled.div`
   border: 1px solid #713648;
   align-self: stretch;
   margin: 16px;
+  border-radius: 4px;
+  overflow: hidden;
 `;
 
 const TradeTitle = styled.div`
@@ -95,6 +102,32 @@ const TradeText = styled.div`
   cursor: pointer;
 `;
 
+const Inventory = styled(Link)`
+  background-color: #713648;
+  align-self: stretch;
+  padding: 8px;
+  margin: 16px;
+  margin-top: auto;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #713648;
+  direction: ltr;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 300;
+  :hover {
+    background-color: white;
+    color: #713648;
+  }
+`;
+
+const InventoryIcon = styled(BsArchive)`
+  margin-right: 8px;
+`;
+
 function Profile({ user }) {
   const [tradeState, setTradeState] = useState({
     isEditing: false,
@@ -112,14 +145,18 @@ function Profile({ user }) {
         <Form onSubmit={onTradeSubmit}>
           <TradeInput
             defaultValue={tradeState.text}
-            onChange={e => setTradeState({ ...tradeState, text: e.target.value })}
+            onChange={e =>
+              setTradeState({ ...tradeState, text: e.target.value })
+            }
             value={tradeState.text}
             autoFocus
           />
         </Form>
       );
     return (
-      <TradeText onClick={() => setTradeState({ ...tradeState, isEditing: true })}>
+      <TradeText
+        onClick={() => setTradeState({ ...tradeState, isEditing: true })}
+      >
         {tradeState.text}
       </TradeText>
     );
@@ -127,12 +164,18 @@ function Profile({ user }) {
 
   if (!user) return null;
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Center>
         <Card>
           <TitleImage src={bgImg} />
           <Avatar src={user.avatar} />
-          <Name>{user.name}</Name>
+          <Name href={user.profile_url} target="_blank">
+            {user.name}
+          </Name>
           <Email>frostack@gmail.com</Email>
           <TradeUrl>
             <TradeTitle>
@@ -141,6 +184,10 @@ function Profile({ user }) {
             </TradeTitle>
             {renderTradeForm()}
           </TradeUrl>
+          <Inventory to="/inventory">
+            <InventoryIcon size={32} />
+            Inventory
+          </Inventory>
         </Card>
       </Center>
     </motion.div>

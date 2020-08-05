@@ -101,7 +101,7 @@ function Header({ user }) {
     if (user.isVerified) {
       return (
         <Profile to="/profile">
-          <Image src={user.data.user.avatar} alt="user-avatar" />
+          <Image src={user?.data?.user?.avatar} alt="user-avatar" />
         </Profile>
       );
     }
